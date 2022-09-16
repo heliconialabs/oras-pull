@@ -1,0 +1,5 @@
+!build
+build/tsconfig.tsbuildinfo
+src
+tsconfig.json
+notes.md
