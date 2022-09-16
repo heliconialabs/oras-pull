@@ -6,7 +6,7 @@ import tar from 'tar';
 async function oauth(repo: string) {
   const token = process.env.GITHUB_TOKEN;
 
-  if (token === undefined || token.startsWith("ghp_") === false) {
+  if (token === undefined || token.startsWith("gh") === false) {
     return "QQ==";
   }
 
