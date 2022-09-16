@@ -13,7 +13,10 @@ async function run() {
 
   console.log("Pull: \t" + imageName);
 
-  const manifestResponse = await fetch('https://ghcr.io/v2/larshp/oras-test/oras-test/manifests/latest', {
+  let [url, tag] = imageName.split(":");
+  url = url.replace("ghcr.io", "https://ghcr.io/v2");
+
+  const manifestResponse = await fetch(url + '/manifests/' + tag, {
     headers: {
       accept: "application/vnd.oci.image.manifest.v1+json",
       authorization: "Bearer QQ=="
@@ -24,7 +27,7 @@ async function run() {
   console.log("Digest: " + layer.digest);
   console.log("Size: \t" + layer.size + " bytes");
 
-  const blobResponse = await fetch('https://ghcr.io/v2/larshp/oras-test/oras-test/blobs/sha256:7d1aa8a6b70b8d85769c3e094d767f3c2e308d5fe34a418e70329123d475c594', {
+  const blobResponse = await fetch(url + '/blobs/' + layer.digest, {
     headers: {
       authorization: "Bearer QQ=="
     }
