@@ -1,0 +1,30 @@
+{
+  "name": "oras-pull",
+  "version": "0.1.0",
+  "description": "[ORAS](https://oras.land) pull for [ghcr.io](https://ghcr.io)",
+  "scripts": {
+    "test": "tsc",
+    "pull": "oras-pull ghcr.io/larshp/oras-test/oras-test:latest"
+  },
+  "bin": {
+    "oras-pull": "./oras-pull"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heliconialabs/oras-pull.git"
+  },
+  "keywords": [
+    "ORAS",
+    "OCI"
+  ],
+  "author": "Lars Hvam Petersen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/heliconialabs/oras-pull/issues"
+  },
+  "homepage": "https://github.com/heliconialabs/oras-pull#readme",
+  "devDependencies": {
+    "@types/node": "^18.7.18",
+    "typescript": "^4.8.3"
+  }
+}

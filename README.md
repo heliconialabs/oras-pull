@@ -1,2 +1,5 @@
 # oras-pull
-oras-pull
+
+[ORAS](https://oras.land) pull for [ghcr.io](https://ghcr.io)
+
+Node 16+
