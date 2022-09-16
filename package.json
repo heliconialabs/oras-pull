@@ -1,6 +1,6 @@
 {
   "name": "oras-pull",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "[ORAS](https://oras.land) pull for [ghcr.io](https://ghcr.io)",
   "scripts": {
     "test": "tsc && npm run pull",
