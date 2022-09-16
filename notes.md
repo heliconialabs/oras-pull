@@ -1,4 +1,12 @@
-Testing notes,
+# Notes
+
+## Authentication
+
+https://blog.atomist.com/github-container-registry/
+
+curl -u username:<personal-access-token> https://ghcr.io/token?service=ghcr.io&scope=repository:<repo>:pull&client_id=oras-pull
+
+## Operations
 
 curl -H 'Accept: application/vnd.oci.image.manifest.v1+json' -H 'Authorization: Bearer QQ==' https://ghcr.io/v2/larshp/oras-test/oras-test/manifests/latest
 

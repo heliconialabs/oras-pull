@@ -3,6 +3,27 @@ import stream from 'node:stream';
 import fetch from 'cross-fetch';
 import tar from 'tar';
 
+async function oauth(repo: string) {
+  const token = process.env.GITHUB_TOKEN;
+
+  if (token === undefined || token.startsWith("ghp_") === false) {
+    return "QQ==";
+  }
+
+  console.log("Token: \t" + repo);
+
+  const tokenResponse = await fetch(`https://ghcr.io/token?service=ghcr.io&scope=repository:${repo}:pull&client_id=npm-js-oras-pull`, {
+    headers: {
+      authorization: "Basic " + Buffer.from("foo:" + process.env.GITHUB_TOKEN).toString("base64"),
+    }
+  });
+  if (tokenResponse.status !== 200) {
+    console.dir(await tokenResponse.json());
+    process.exit(1);
+  }
+  return (await tokenResponse.json()).token;
+}
+
 async function run() {
   const imageName = process.argv[2];
 
@@ -14,14 +35,23 @@ async function run() {
   console.log("Pull: \t" + imageName);
 
   let [url, tag] = imageName.split(":");
+
+  const repo = url.replace("ghcr.io/", "").split("/").splice(0, 2).join("/");
+  const bearer = await oauth(repo);
+
   url = url.replace("ghcr.io", "https://ghcr.io/v2");
 
   const manifestResponse = await fetch(url + '/manifests/' + tag, {
     headers: {
       accept: "application/vnd.oci.image.manifest.v1+json",
-      authorization: "Bearer QQ=="
+      authorization: "Bearer " + bearer
     }
   });
+  if (manifestResponse.status !== 200) {
+    console.dir(await manifestResponse.json());
+    process.exit(1);
+  }
+
   const manifest = await manifestResponse.json();
   const layer = manifest.layers[0];
   console.log("Digest: " + layer.digest);
@@ -29,9 +59,13 @@ async function run() {
 
   const blobResponse = await fetch(url + '/blobs/' + layer.digest, {
     headers: {
-      authorization: "Bearer QQ=="
+      authorization: "Bearer " + bearer
     }
   });
+  if (blobResponse.status !== 200) {
+    console.dir(await manifestResponse.json());
+    process.exit(1);
+  }
 
   const responseBuffer = Buffer.from(await blobResponse.arrayBuffer());
   const readableStream = stream.Readable.from(responseBuffer);

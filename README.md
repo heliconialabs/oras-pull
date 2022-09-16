@@ -10,5 +10,6 @@ No features, minimal implementation for simplest scenario
 
 ```
 npm install oras-pull -g
+export GITHUB_TOKEN=<PAT>
 oras-pull ghcr.io/larshp/oras-test/oras-test:latest
 ```
