@@ -4,7 +4,10 @@
   "description": "[ORAS](https://oras.land) pull for [ghcr.io](https://ghcr.io)",
   "scripts": {
     "test": "tsc && npm run pull",
-    "pull": "node build/cli.js ghcr.io/larshp/oras-test/oras-test:latest"
+    "pull": "node build/cli.js ghcr.io/larshp/oras-test/oras-test:latest",
+    "publish:dryrun": "npm publish --dry-run",
+    "publish:minor": "npm --no-git-tag-version version minor && rm -rf build && npm install && npm test && npm publish --access public",
+    "publish:patch": "npm --no-git-tag-version version patch && rm -rf build && npm install && npm test && npm publish --access public"
   },
   "bin": {
     "oras-pull": "./oras-pull"
