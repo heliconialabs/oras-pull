@@ -8,7 +8,7 @@ async function run() {
 
   if (imageName === undefined) {
     console.log("Supply argument");
-    process.exit(11);
+    process.exit(1);
   }
 
   console.log("Pull: \t" + imageName);
