@@ -33,11 +33,11 @@ async function run() {
     }
   });
 
-  const buf = Buffer.from(await blobResponse.arrayBuffer());
-  const st = stream.Readable.from(buf);
+  const responseBuffer = Buffer.from(await blobResponse.arrayBuffer());
+  const readableStream = stream.Readable.from(responseBuffer);
 
   console.log("");
-  st.pipe(
+  readableStream.pipe(
     tar.extract({
       onentry: entry => { console.log("Extract: " + entry.path); }
     })
