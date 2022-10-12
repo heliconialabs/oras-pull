@@ -1,4 +1,4 @@
-![npm](https://img.shields.io/npm/v/oras-pull)
+[![npm](https://img.shields.io/npm/v/oras-pull)](https://www.npmjs.com/package/oras-pull)
 
 # oras-pull
 
