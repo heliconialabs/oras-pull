@@ -1,3 +1,5 @@
+![npm](https://img.shields.io/npm/v/oras-pull)
+
 # oras-pull
 
 [ORAS](https://oras.land) pull for [ghcr.io](https://ghcr.io)
