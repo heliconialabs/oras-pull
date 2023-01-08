@@ -1,6 +1,6 @@
 {
   "name": "oras-pull",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "ORAS pull for ghcr.io",
   "scripts": {
     "test": "tsc && npm run pull",
@@ -27,12 +27,12 @@
   },
   "homepage": "https://github.com/heliconialabs/oras-pull#readme",
   "devDependencies": {
-    "@types/node": "^18.7.18",
-    "@types/tar": "^6.1.2",
-    "typescript": "^4.8.3"
+    "@types/node": "^18.11.18",
+    "@types/tar": "^6.1.3",
+    "typescript": "^4.9.4"
   },
   "dependencies": {
     "cross-fetch": "^3.1.5",
-    "tar": "^6.1.11"
+    "tar": "^6.1.13"
   }
 }
