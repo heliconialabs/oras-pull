@@ -71,11 +71,23 @@ async function run() {
   const readableStream = stream.Readable.from(responseBuffer);
 
   console.log("");
-  readableStream.pipe(
+  let count = 0;
+  const st = readableStream.pipe(
     tar.extract({
-      onentry: entry => { console.log("Extract: " + entry.path); }
+      onentry: entry => {
+        count++;
+        if (count < 10) {
+          console.log("Extract: " + entry.path);
+        } else if (count % 100 === 0) {
+          console.log(count);
+        }
+      }
     })
   );
+  st.on('finish', () => {
+    console.log(count + " folders/files extracted");
+  });
+
 }
 
 run().then(() => {
