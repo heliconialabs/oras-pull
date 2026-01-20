@@ -2,3 +2,4 @@ node_modules
 build
 foo.tar
 src/hello.txt
+.env
