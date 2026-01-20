@@ -1,7 +1,7 @@
 import process from 'node:process';
 import stream from 'node:stream';
 import fetch from 'cross-fetch';
-import tar from 'tar';
+import * as tar from 'tar';
 
 async function oauth(repo: string) {
   const token = process.env.GITHUB_TOKEN;
