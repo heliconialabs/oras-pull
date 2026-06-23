@@ -29,7 +29,7 @@
   "devDependencies": {
     "@types/node": "^25.9.4",
     "@types/tar": "^7.0.87",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "dependencies": {
     "cross-fetch": "^4.1.0",
