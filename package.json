@@ -1,6 +1,6 @@
 {
   "name": "oras-pull",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "ORAS pull for ghcr.io",
   "scripts": {
     "test": "tsc && npm run pull",
@@ -33,6 +33,6 @@
   },
   "dependencies": {
     "cross-fetch": "^4.1.0",
-    "tar": "^7.5.20"
+    "tar": "^7.5.22"
   }
 }
